@@ -1,0 +1,113 @@
+@import url(./normalize.css);
+@font-face {
+  font-family: scoreFont;
+  src: url(fonts/Bodo\ Amat.otf);
+}
+
+:root {
+  font-size: 62.5%; /* To turn 1rem into 10px */
+  --red-color: rgb(236, 0, 80);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Big container */
+body {
+  font-size: 1.6rem; /* To turn 1rem into 10px */
+  background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(119, 117, 119, 0.9));
+}
+
+#container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Header */
+header{
+  font-size: min(12vmin, 20rem);
+  margin-bottom: 2rem;
+}
+
+span {
+  color: var(--red-color);
+}
+
+
+/* gameBoard */
+#gameBoardContainer{
+  display: grid;
+  grid-template-columns: repeat(3, clamp(50px, 20vmin, 600px));
+  grid-template-rows: repeat(3, clamp(50px, 20vmin, 600px));
+  text-align: center;
+  grid-gap: 3px;
+  box-shadow: 0px 0px 5px 3px rgb(0 0 0 / 50%);
+}
+
+.classCells {
+  background-color: white;
+  color: var(--red-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: min(9vmin, 15rem);
+}
+
+/* ScoreBoard */
+#scoreBoardID {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  font-family: scoreFont;
+  font-size: min(12vmin, 20rem);
+}
+
+.blur > *:not(#scoreBoardID, header) {
+  transition-duration: 0.2s;
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+}
+
+.blur > header {
+  transition-duration: 0.2s;
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+}
+
+#scoreBoardID span {
+  font-size: min(15vmin, 20rem);
+  margin-top: 3rem;
+  align-self: center;
+}
+
+#scoreBoardID button {
+  font-size: min(5vmin, 10rem);
+  align-self: center;
+  background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(119, 117, 119, 0.9));
+  border: 2px solid rgb(0, 0, 0, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  border-radius: .25rem;
+  cursor: pointer;
+  transition: all 250ms;
+}
+
+#scoreBoardID button:hover,
+#scoreBoardID button:focus {
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+#scoreBoardID button:hover {
+  transform: translateY(-1px);
+}
+
+#scoreBoardID button:active {
+  background-color: #F0F0F1;
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
+}
