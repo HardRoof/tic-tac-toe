@@ -55,6 +55,8 @@ span {
   align-items: center;
   justify-content: center;
   font-size: min(9vmin, 15rem);
+  user-select: none;
+  cursor: pointer;
 }
 
 /* ScoreBoard */
@@ -64,6 +66,8 @@ span {
   flex-direction: column;
   font-family: scoreFont;
   font-size: min(12vmin, 20rem);
+  height: 70vmin;
+  justify-content: center;
 }
 
 .blur > *:not(#scoreBoardID, header) {
@@ -87,14 +91,17 @@ span {
 #scoreBoardID button {
   font-size: min(5vmin, 10rem);
   align-self: center;
+  margin-top: 1.5rem;
+  padding: 1rem 2rem;
   background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(119, 117, 119, 0.9));
   border: 2px solid rgb(0, 0, 0, 0.1);
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-  border-radius: .25rem;
+  border-radius: 0.5rem;
   cursor: pointer;
   transition: all 250ms;
 }
 
+/* PseudoClasses */
 #scoreBoardID button:hover,
 #scoreBoardID button:focus {
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
@@ -110,4 +117,14 @@ span {
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
   color: rgba(0, 0, 0, 0.65);
   transform: translateY(0);
+}
+
+.classCells:hover,
+.classCells:focus {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.classCells:active{ 
+  transform: translate(0.5px, 1.5px);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
 }
