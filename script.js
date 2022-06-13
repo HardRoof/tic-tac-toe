@@ -25,6 +25,7 @@ const GameBoard = (() => {
   const computer = player('computer', "O");
 
   const playRound = (e) => {
+    draw = true
     userAttack(e)
     computerAttack(e)
   }
@@ -50,27 +51,28 @@ const GameBoard = (() => {
   const checkWinner = () => {
     for (let i = 0; i < 7; i+=3) {
       if ((gameBoard[i] == gameBoard[i+1]) && (gameBoard[i] == gameBoard[i+2]) && (gameBoard[i] != "")) {
-        console.log("Won")
         gameOver()
       }
     }
     for (let i = 0; i < 3; i++) {
       if ((gameBoard[i] == gameBoard[i+3]) && (gameBoard[i] == gameBoard[i+6]) && (gameBoard[i] != "")) {
-        console.log("Won")
         gameOver()
       }
     }
     if (gameBoard[0] == gameBoard[4] && gameBoard[0] == gameBoard[8] && gameBoard[0] != "") {
-      console.log("Won")
       gameOver()
     }
-    if (gameBoard[2] == gameBoard[4] && gameBoard[2] == gameBoard[6] && gameBoard[2] != "") {
-      console.log("Won")
+    else if (gameBoard[2] == gameBoard[4] && gameBoard[2] == gameBoard[6] && gameBoard[2] != "") {
+      gameOver()
+    }
+    else if (gameBoard.includes("") == false && draw == true) {
+      user.attacked = null
       gameOver()
     }
   }
 
   const gameOver = () => {
+    draw = false
     classCells.forEach(div => {
       div.removeAttribute("onclick")
     });
@@ -81,12 +83,17 @@ const GameBoard = (() => {
 
     newSpan = document.createElement('SPAN')
     scoreBoard.appendChild(newSpan)
+
     if (user.attacked == true) {
       newSpan.innerText = `${user.weapon}`
     }
-    else {
+    else if (user.attacked == false){
       newSpan.innerText = `${computer.weapon}`
     }
+    else if (user.attacked == null){
+      newSpan.innerText = "No one!"
+    }
+
     container.classList.add('blur');
 
     restartBtn = document.createElement('button');
@@ -105,7 +112,6 @@ const GameBoard = (() => {
       });
     user.attacked = false
     })
-    
   }
 
   return {
