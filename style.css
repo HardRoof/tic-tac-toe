@@ -13,30 +13,88 @@
   box-sizing: border-box;
 }
 
-/* Big container */
+/* Body */
 body {
-  font-size: 1.6rem; /* To turn 1rem into 10px */
+  font-size: 1.6rem;
   background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(119, 117, 119, 0.9));
-}
-
-#container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  font-family: 'Pacifico', scoreFont, cursive;
+  height: 100vh;
 }
 
 /* Header */
-header{
+header {
+  text-align: center;
   font-size: min(12vmin, 20rem);
-  margin-bottom: 2rem;
+  text-decoration: underline;
+  margin-bottom: 11vh;
+  padding-top: 2rem;
+  text-shadow: 4px 4px var(--red-color);
+  user-select: none
 }
 
 span {
   color: var(--red-color);
+  text-shadow: 0px 0px;
 }
 
+/* Initial page */
+#initialPage {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  justify-items: center;
+  row-gap: 7vmin;
+}
+
+.formClass {
+  display: grid;
+  grid-template-columns: min-content min-content;
+  justify-items: center;
+  column-gap: 20vmin;
+}
+
+.formClass img:first-of-type{
+  grid-area: 2 / 1 / 3 / 2;
+}
+
+.formClass input:first-of-type{
+  grid-area: 3 / 1 / 4 / 2;
+}
+
+.formClass img {
+  height: 30vmin;
+  margin: 1rem 0 2rem 0
+}
+
+.formClass input {
+  width: 110%;
+  font-family: scoreFont;
+  font-size: min(3vmin, 3.2rem);
+}
+
+label {
+  font-size: min(8vmin, 15rem);
+  text-shadow: 2px 2px var(--red-color);
+}
+
+#initialPage button, .newGame {
+  background: linear-gradient(to right, var(--red-color), rgba(255, 255, 255, 0));
+  padding: 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: scoreFont, cursive;
+  letter-spacing: 1px;
+  font-size: min(3vmin, 3.2rem);
+}
+
+/* Main container */
+#container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 2s linear;
+}
 
 /* gameBoard */
 #gameBoardContainer{
@@ -86,6 +144,7 @@ span {
   font-size: min(15vmin, 20rem);
   margin-top: 3rem;
   align-self: center;
+  font-family: 'Pacifico';
 }
 
 #scoreBoardID button {
@@ -127,4 +186,13 @@ span {
 .classCells:active{ 
   transform: translate(0.5px, 1.5px);
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+}
+
+/* Display = none */
+#initialPage.hidden, #container.hidden {
+  display: none;
+}
+
+.newGame {
+margin-top: 2rem;
 }
