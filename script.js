@@ -1,6 +1,8 @@
 const gameBoardContainer = document.querySelector("#gameBoardContainer")
 const body = document.body
 const container = document.querySelector("#container")
+const PlayerOne = document.querySelector("#PlayerOne")
+const PlayerTwo = document.querySelector("#PlayerTwo")
 let gameBoard = ["", "", "","", "", "","", "", ""]
 
 const GameBoard = (() => {
@@ -21,8 +23,11 @@ const GameBoard = (() => {
     let attacked = false
     return {name, weapon, attacked};
   };
-  const user = player('user', "X");
-  const computer = player('computer', "O");
+
+  const createPlayers = () => {
+    user = player(PlayerOne.value, "X");
+    computer = player(PlayerTwo.value, "O");
+  }
 
   const playRound = (e) => {
     draw = true
@@ -85,10 +90,10 @@ const GameBoard = (() => {
     scoreBoard.appendChild(newSpan)
 
     if (user.attacked == true) {
-      newSpan.innerText = `${user.weapon}`
+      newSpan.innerText = `${PlayerOne.value}`
     }
     else if (user.attacked == false){
-      newSpan.innerText = `${computer.weapon}`
+      newSpan.innerText = `${PlayerTwo.value}`
     }
     else if (user.attacked == null){
       newSpan.innerText = "No one!"
@@ -100,26 +105,27 @@ const GameBoard = (() => {
     scoreBoard.appendChild(restartBtn)
     restartBtn.type = "button"
     restartBtn.textContent = "Play again"
-    restartBtn.addEventListener("click", () => {
-      container.classList.remove("blur");
-      scoreBoard.remove()
-      gameBoard = ["", "", "","", "", "","", "", ""]
-      classCells.forEach(div => {
-        div.innerText = ""
-      });
-      classCells.forEach(div => {
-        div.setAttribute("onclick", "attack(this)")
-      });
-    user.attacked = false
-    })
+    restartBtn.addEventListener("click", clear)
+  }
+  const clear = () => {
+    container.classList.remove("blur");
+    if (typeof scoreBoard !== "undefined") scoreBoard.remove()
+    gameBoard = ["", "", "","", "", "","", "", ""]
+    classCells.forEach(div => {
+      div.innerText = ""
+    });
+    classCells.forEach(div => {
+      div.setAttribute("onclick", "attack(this)")
+    });
+  user.attacked = false
   }
 
   return {
     createGameBoard,
     playRound,
     player,
-    user,
-    computer,
+    createPlayers,
+    clear,
   }
 })();
 
@@ -128,3 +134,25 @@ function attack(e) {
   arrayPosition = e.getAttribute("data-position")
   GameBoard.playRound(e)
 }
+
+const formPlayer = document.getElementById("formPlayer")
+const initialPage = document.querySelector("#initialPage")
+
+formPlayer.addEventListener("submit", (e)=>{
+  e.preventDefault(); //To prevent submission of the form
+  console.log(PlayerOne.value)
+  console.log(PlayerTwo.value)
+  GameBoard.createPlayers()
+  initialPage.classList.add('hidden')
+  container.classList.remove("hidden");
+})
+
+
+newGameBtn = document.querySelector('.newGame');
+newGameBtn.addEventListener("click", () =>{
+  GameBoard.clear()
+  initialPage.classList.remove('hidden')
+  container.classList.add("hidden")
+  PlayerOne.value = "Player one"
+  PlayerTwo.value = ""
+})
