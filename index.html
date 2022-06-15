@@ -8,11 +8,27 @@
 		<link rel="shortcut icon" type="image/jpg" href="">
 		<script src="script.js" defer></script>
 		<link rel="stylesheet" href="style.css">
+		<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 	</head>
 	<body>
-    <div id="container">
-			<header class="title">Tic <span>Tac</span> Toe</header>
+		<header class="title">Tic <span>Tac</span> Toe</header>
+		<div id="initialPage">
+			<form action="" method="post" id="formPlayer" class="formClass">
+				<label for="PlayerOne">X</label>
+				<img src="imgs/metaverse-12387 (black).svg" alt="Player One">
+				<input type="text" id="PlayerOne" placeholder="Insert name" value="Player one" autofocus autocomplete="off" maxlength="12" required> 
+				<label for="PlayerTwo">O</label>
+				<img src="imgs/metaverse-12388(2).svg" alt="Player Two">
+				<input type="text" id="PlayerTwo" placeholder="Insert name/Bot" list="AI" autocomplete="off" maxlength="12" required>
+				<datalist id="AI">
+					<option value="AI Bot 🤖">
+				</datalist>
+			</form>
+			<button type="submit" form="formPlayer">Start Game</button>
+		</div>
+    <div id="container" class="hidden">
 			<div id="gameBoardContainer"></div>
+			<button type="button" class="newGame">New game</button>
 		</div>
 	</body>
 </html>
