@@ -19,6 +19,7 @@ body {
   background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(119, 117, 119, 0.9));
   font-family: 'Pacifico', scoreFont, cursive;
   height: 100vh;
+  -webkit-text-stroke: 0.45px; /* To improve font rendering */
 }
 
 /* Header */
@@ -123,9 +124,9 @@ label {
   display: flex;
   flex-direction: column;
   font-family: scoreFont;
-  font-size: min(12vmin, 20rem);
+  font-size: min(11vmin, 18rem);
   height: 70vmin;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .blur > *:not(#scoreBoardID, header) {
@@ -141,7 +142,7 @@ label {
 }
 
 #scoreBoardID span {
-  font-size: min(15vmin, 20rem);
+  font-size: min(14vmin, 18rem);
   margin-top: 3rem;
   align-self: center;
   font-family: 'Pacifico';
@@ -150,7 +151,7 @@ label {
 #scoreBoardID button {
   font-size: min(5vmin, 10rem);
   align-self: center;
-  margin-top: 1.5rem;
+  margin-top: 4rem;
   padding: 1rem 2rem;
   background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(119, 117, 119, 0.9));
   border: 2px solid rgb(0, 0, 0, 0.1);
