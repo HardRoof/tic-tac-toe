@@ -79,10 +79,10 @@ const GameBoard = (() => {
         break;
       }
     }
-    if (gameBoard[0] == gameBoard[4] && gameBoard[0] == gameBoard[8] && gameBoard[0] != "") {
+    if (gameBoard[0] == gameBoard[4] && gameBoard[0] == gameBoard[8] && gameBoard[0] != "" && (draw != false)) {
       gameOver();
     }
-    else if (gameBoard[2] == gameBoard[4] && gameBoard[2] == gameBoard[6] && gameBoard[2] != "") {
+    else if (gameBoard[2] == gameBoard[4] && gameBoard[2] == gameBoard[6] && gameBoard[2] != "" && (draw != false)) {
       gameOver();
     }
     else if (gameBoard.includes("") == false && draw == true) {
