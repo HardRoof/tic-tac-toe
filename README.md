@@ -1,7 +1,7 @@
 # tic-tac-toe
 
 ## About the project
-A version of the timeless Tic-tac-toe game. Created with HTML, CSS and JS using Factory Functions and Module Pattern. The Game offers a Player vs Player game mode, as well as a player vs AI Bot 🤖 game mode. - [Live Demo](https://hardroof.github.io/tic-tac-toe/)
+A version of the timeless Tic-tac-toe game. Created with HTML, CSS and JS using Factory Functions and Module Pattern. The Game offers a Player vs Player game mode, as well as a player vs Bot🤖 game mode. - [Live Demo](https://hardroof.github.io/tic-tac-toe/)
 <br/><br/>
 
 ## Technologies used
